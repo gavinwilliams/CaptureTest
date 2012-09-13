@@ -13,10 +13,63 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize session = _session;
+@synthesize preview = _preview;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// Insert code here to initialize your application
+	// Initialise the capture session
+	_session = [[AVCaptureSession alloc] init];
+	NSError *error = nil;
+	
+	// Get the default video input
+	AVCaptureDevice *input = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:input error:&error];
+	
+	if(error != nil){
+		NSLog(@"Something's not right here... couldn't initialise the capture input");
+		return;
+	}
+	
+	// Check to see whether the session can add an input
+	if([_session canAddInput:deviceInput]){
+		// Add that bad boy
+		[_session addInput:deviceInput];
+	}
+	
+	// Create the capture preview
+	_preview = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
+	
+	// Add a border to the layer just for reference
+	[_preview setBorderColor:[NSColor blackColor].CGColor];
+	[_preview setBorderWidth:4];
+	
+	// Get the main connection, it should be a video
+	AVCaptureConnection *connection = _preview.connection;
+	
+	// Check to see whether you can change the orientation
+	if(connection.supportsVideoOrientation){
+		
+		// If it can then make it portrait
+		[connection setVideoOrientation:AVCaptureVideoOrientationLandscapeLeft];
+	} else {
+		
+		// If not... tough luck
+		NSLog(@"Couldn't change the video orientation, sorry, get a better camera!");
+	}
+	
+	// !IMPORTANT! Start the capture session 
+	[_session startRunning];
+	
+	// !IMPORTANT!  Set that the front preview wants the layer, remember to call this BEFORE you add the preview layer to the UIView
+	[_frontpreview setWantsLayer:YES];
+	
+	// Set the preview frame to be at the bottom left and the width and height of the preview view
+	_preview.frame = CGRectMake(0, 0, _frontpreview.frame.size.width, _frontpreview.frame.size.height);
+	
+	// Add the layer
+	[_frontpreview.layer addSublayer:_preview];
+	
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.fishrod-interactive.CaptureTest" in the user's Application Support directory.

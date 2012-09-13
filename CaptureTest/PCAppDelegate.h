@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface PCAppDelegate : NSObject <NSApplicationDelegate>
 
@@ -15,6 +16,10 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) AVCaptureSession *session;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *preview;
+@property (weak) IBOutlet NSView *frontpreview;
 
 - (IBAction)saveAction:(id)sender;
 
