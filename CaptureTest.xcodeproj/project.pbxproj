@@ -18,6 +18,8 @@
 		DDF7249C1601437D006659FF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF724791601437D006659FF /* Cocoa.framework */; };
 		DDF724A41601437D006659FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDF724A21601437D006659FF /* InfoPlist.strings */; };
 		DDF724A71601437D006659FF /* CaptureTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF724A61601437D006659FF /* CaptureTestTests.m */; };
+		DDF724B1160143A4006659FF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF724B0160143A4006659FF /* AVFoundation.framework */; };
+		DDF724B416014965006659FF /* AVCaptureVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF724B316014964006659FF /* AVCaptureVideoPreviewView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		DDF724A31601437D006659FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DDF724A51601437D006659FF /* CaptureTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptureTestTests.h; sourceTree = "<group>"; };
 		DDF724A61601437D006659FF /* CaptureTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptureTestTests.m; sourceTree = "<group>"; };
+		DDF724B0160143A4006659FF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DDF724B216014964006659FF /* AVCaptureVideoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureVideoPreviewView.h; sourceTree = "<group>"; };
+		DDF724B316014964006659FF /* AVCaptureVideoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureVideoPreviewView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF724B1160143A4006659FF /* AVFoundation.framework in Frameworks */,
 				DDF7247A1601437D006659FF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +102,7 @@
 		DDF724781601437D006659FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DDF724B0160143A4006659FF /* AVFoundation.framework */,
 				DDF724791601437D006659FF /* Cocoa.framework */,
 				DDF7249A1601437D006659FF /* SenTestingKit.framework */,
 				DDF7247B1601437D006659FF /* Other Frameworks */,
@@ -121,6 +128,8 @@
 				DDF7248E1601437D006659FF /* MainMenu.xib */,
 				DDF724911601437D006659FF /* CaptureTest.xcdatamodeld */,
 				DDF724801601437D006659FF /* Supporting Files */,
+				DDF724B216014964006659FF /* AVCaptureVideoPreviewView.h */,
+				DDF724B316014964006659FF /* AVCaptureVideoPreviewView.m */,
 			);
 			path = CaptureTest;
 			sourceTree = "<group>";
@@ -268,6 +277,7 @@
 				DDF724861601437D006659FF /* main.m in Sources */,
 				DDF7248D1601437D006659FF /* PCAppDelegate.m in Sources */,
 				DDF724931601437D006659FF /* CaptureTest.xcdatamodeld in Sources */,
+				DDF724B416014965006659FF /* AVCaptureVideoPreviewView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
